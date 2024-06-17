@@ -70,7 +70,7 @@ def create_item(item: ItemCreate, db: Session = Depends(get_db)):
 @app.get("/items/", response_model=List[ItemOut])
 def read_items(skip: int = 0, limit: int = 10, db: Session = Depends(get_db)):
     return db.query(Item).offset(skip).limit(limit).all()
-'''
+
 @app.get("/items/{item_id}", response_model=ItemOut)
 def read_item(item_id: int, db: Session = Depends(get_db)):
     db_item = db.query(Item).filter(Item.id == item_id).first()
@@ -97,4 +97,4 @@ def delete_item(item_id: int, db: Session = Depends(get_db)):
     db.delete(db_item)
     db.commit()
     return db_item
-    '''
+
